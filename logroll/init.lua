@@ -18,7 +18,7 @@ local function default_formatter(level, ...)
     local msg = nil
 
     if #{...} > 1 then
-        msg = string.format(({...})[1], unpack(rest({...})))
+        msg = string.format(({...})[1], unpack(fn.rest({...})))
     else
         msg = ({...})[1]
     end
