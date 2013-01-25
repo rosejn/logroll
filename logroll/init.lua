@@ -66,3 +66,23 @@ function logroll.file_logger(path, options)
 
     return make_logger(io.open(path, 'w'), options)
 end
+
+
+-- A logger that combines several other loggers
+function logroll.combine(...)
+
+    local joint = {
+        subloggers = {...}
+    }
+
+    for _,level in ipairs(level_strs) do
+        local fname = string.lower(level)
+        joint[fname] = function(str)
+            for _,lg in ipairs(joint.subloggers) do
+                lg[fname](str)
+            end
+        end
+    end
+
+    return joint
+end

@@ -22,3 +22,11 @@ or to a file:
     require 'logroll'
     flog = logroll.file_logger('logs/testing.log')
     flog.debug("Testing file write.")
+
+or to both:
+
+    require 'logroll'
+    flog = logroll.file_logger('logs/testing.log')
+    plog = logroll.print_logger()
+    log = logroll.combine(flog, plog)
+    log.debug("Testing file write.")
