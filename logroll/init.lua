@@ -4,6 +4,7 @@ require 'io'
 require 'string'
 
 require 'fn'
+require 'pprint'
 
 logroll = {}
 
@@ -21,7 +22,7 @@ local function default_formatter(level, ...)
     if #{...} > 1 then
         msg = string.format(({...})[1], unpack(fn.rest({...})))
     else
-        msg = ({...})[1]
+        msg = pprint.pretty_string(({...})[1])
     end
 
     return string.format("[%s - %s] - %s\n", LOG_LEVELS[level], os.date("%Y_%m_%d_%X"), msg)
