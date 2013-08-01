@@ -83,9 +83,9 @@ function logroll.combine(...)
 
     for _,level in ipairs(LOG_LEVELS) do
         local fname = string.lower(level)
-        joint[fname] = function(str)
+        joint[fname] = function(...)
             for _,lg in ipairs(joint.subloggers) do
-                lg[fname](str)
+                lg[fname](...)
             end
         end
     end
