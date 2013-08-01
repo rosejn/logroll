@@ -14,6 +14,7 @@ local LOG_LEVELS = {'DEBUG', 'INFO', 'WARN', 'ERROR'}
 for i, label in ipairs(LOG_LEVELS) do
     logroll[label] = i
 end
+logroll.levels = LOG_LEVELS
 
 
 local function default_formatter(level, ...)
