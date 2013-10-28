@@ -1,4 +1,4 @@
-require 'sys'
+require 'paths'
 require 'os'
 require 'io'
 require 'string'
@@ -69,7 +69,7 @@ function logroll.file_logger(path, options)
         path = path .. '-'..os.date("%Y_%m_%d_%X")
     end
 
-    os.execute('mkdir -p "' .. sys.dirname(path) .. '"')
+    os.execute('mkdir -p "' .. paths.dirname(path) .. '"')
 
     return make_logger(io.open(path, 'w'), options)
 end
